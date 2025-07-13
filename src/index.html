@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Web</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cumpleaños</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -67,9 +65,9 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       min-height: 420px;
-      /* altura aumentada */
-      display: flex;
-      flex-direction: column;
+      width: 18rem;
+      cursor: pointer;
+      overflow: hidden;
     }
 
     .card:hover {
@@ -77,48 +75,38 @@
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .card-body {
-      flex-grow: 1;
-      padding: 1.5rem;
-    }
-
-    .card-img-top {
-      height: 300px;
-      object-fit: cover;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      object-fit: cover;
-      object-position: center 10%;
-    }
-
-    .card-img-center {
-      height: 300px;
-      object-fit: cover;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      object-fit: cover;
-      object-position: center 30%;
-    }
-
+    .card-img-top,
+    .card-img-center,
     .card-img-bottom {
       height: 300px;
       object-fit: cover;
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
-      object-position: center 40%;
+      object-position: center 30%;
     }
 
-    .card-title {
-      font-weight: 600;
+    .card-title, .card-text, .card-body img, .card-body small {
+      transition: opacity 0.3s ease;
+    }
+
+    .card.open .card-title,
+    .card.open .card-text:not(.card-extra-text),
+    .card.open img,
+    .card.open small {
+      display: none;
+    }
+
+    .card-extra-text {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      margin-top: 1rem;
       color: #ffffff;
     }
 
-    .card-text {
-      color: #e0e0e0;
-    }
-
-    .text-body-secondary {
-      color: #ccc !important;
+    .card.open .card-extra-text {
+      display: block;
+      opacity: 1;
     }
 
     @media (max-width: 768px) {
@@ -133,51 +121,402 @@
     }
   </style>
 </head>
-
 <body>
 
   <header>
     <nav>
       <ul class="d-flex justify-content-center">
-        <li><a href="#Servicios" class="nav-link">Inicio</a></li>
+        <li><a href="#Servicios" class="nav-link">👣RECAPITULANDO👣</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- AUDIO -->
+  <h1> </h1>
+  <button id="playBtn" onclick="playMusic()"> ‼️ Tocame  ‼️</button>
+
+  <audio id="myAudio" loop>
+    <source src="Golden.mp3" type="audio/mpeg">
+  </audio>
+<!-- AUDIO -->
+
   <main>
     <section>
-      <h1 id="Servicios">Nuestro Recuerdo</h1>
+      <h1 id="Servicios">❤️Nuestro Recuerdo❤️</h1>
+      <h5> ✨ESPERO QUE TE GUSTE✨ </h5>
+      
       <div class="d-flex flex-wrap justify-content-center card-group">
-        <div class="card" style="width: 18rem;">
-          <img src="1.jpg" alt="Foto" class="card-img-bottom">
+        <!-- Tarjeta 1 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="1.jpeg" alt="Foto" class="card-img-bottom">
           <div class="card-body">
-            <h5 class="card-title">Como te conocí, que sentí.</h5>
-            <p class="card-text">Matias Llanos y Yaeth.</p>
-            <p class="card-text"><small class="text-body-secondary">2019</small></p>
+            <h5 class="card-title">💫Nuestro Primer Encuentro💫</h5>
+            <p class="card-text">  </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Nuestro primer encuentro. fue en el liceo, y aunque quizás tu no lo notaste al principio, yo no podía dejar de mirarte. Recuerdo que estaba nervioso, con ese cosquilleo en el estómago que uno siente cuando algo importante está por pasar. Nos tocó compartir en una actividad donde había que bailar, y aunque intentaba disimular, mis ojos siempre se iban hacia ti.
+desde ese momento me llamó la atención tu forma de ser, tu risa, tu energía. Mientras todos se concentraban en los pasos de baile, yo solo pensaba en cómo podía acercarme sin que se notara cuánto me atraías.
+Ese primer encuentro, aunque lleno de silencios y miradas tímidas, fue el inicio de algo que con el tiempo se transformó en nuestro pololeo. Hoy lo recuerdo con cariño, porque ahí comenzó nuestra historia: entre risas, música y esas miradas que decían más que mil palabras.</p>
+            </div>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
+        <!-- Tarjeta 2 -->
+        <div class="card" onclick="toggleCard(this)">
           <img src="2.jpg" class="card-img-center" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Agradecimiento.</h5>
-            <p class="card-text">Solo eres tú.</p>
-            <p class="card-text"><small class="text-body-secondary">2022</small></p>
+            <h5 class="card-title">👫🏻Conociendonos👫🏻</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Conociéndonos. fue como abrir una puerta a algo nuevo, algo que poco a poco empezó a tener sentido. Después de cruzar esas primeras palabras, de saludarnos con cierta timidez, decidimos dar un paso más y tener una pequeña salida, solo para ver qué pasaba… y lo que pasó fue mágico.
+En esa salida comenzamos a hablar más tranquilos, a descubrir qué nos gustaba, qué nos hacía reír, qué nos emocionaba. Era lindo ver cómo coincidíamos en cosas simples, y cómo lo distinto también nos llamaba la atención. Entre conversaciones, miradas y alguna que otra sonrisa nerviosa, empezamos a conectar de verdad.
+Fue en esos momentos, sin darnos cuenta, donde nuestra historia de amor comenzó. No fue algo de golpe, sino paso a paso, con la ternura de quien se va descubriendo con cariño y sin apuro. Ahí entendí que conocer a alguien también es una forma de enamorarse. </p>
+            </div>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-          <img src="3.jpg" class="card-img-top" alt="...">
+        <!-- Tarjeta 3 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="3.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Porque tú</h5>
-            <p class="card-text">Simplemente sí.</p>
-            <p class="card-text"><small class="text-body-secondary">2200</small></p>
+            <h5 class="card-title">👩🏻‍❤️‍👨🏻"1° Salida"👩🏻‍❤️‍👨🏻</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Nuestra primera salida. marcó un antes y un después, ya habíamos pasado los nervios del primer encuentro, y esta vez todo se sintió más natural, más cómodo. Ya no éramos dos extraños mirándose con curiosidad, sino dos personas que habían comenzado a conocerse de verdad, con ganas de compartir más tiempo juntos.
+Recuerdo que caminamos, conversamos y reímos sin preocuparnos del reloj. No hubo silencios incómodos, solo momentos simples que se sentían especiales. Hablamos de nuestras familias, de las cosas que nos gustaban, de sueños y pequeñas anécdotas. 
+Fue ahí donde nuestra historia empezó a tomar forma con firmeza, sin presiones, con ganas reales de seguir conociéndonos y construir algo juntos.
+Esa primera salida, aunque sencilla, se volvió uno de esos recuerdos que se guardan con una sonrisa. Porque fue el inicio de todo lo bonito que vino después.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+            <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 4 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="4.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">😷Pandemia😷</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Pandemia. Todo cambió de un momento a otro, y lo que antes era cotidiano, como vernos o salir a caminar, se volvió casi imposible. Fue duro pasar tantos meses sin compartir en persona, sin esas miradas cómplices ni las conversaciones cara a cara.
+Pero a pesar de la distancia, no dejamos que eso nos detuviera. Seguimos hablando, apoyándonos, manteniendo el cariño intacto incluso desde lejos. Y cuando por fin pudimos volver a vernos, en la seguridad de nuestras casas, fue como recuperar algo que nunca habíamos perdido, solo habíamos pausado.
+Ese reencuentro después de tanto tiempo fue emocionante. Nos abrazamos con fuerza, como si quisiéramos recuperar todo lo que no pudimos vivir en esos meses. La pandemia puso a prueba muchas cosas, pero también nos demostró que lo nuestro era fuerte y real.
+Desde ahí, valoramos más cada momento juntos. Porque entendimos que el amor, cuando es sincero, puede resistir hasta lo más inesperado. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 5 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="5.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🤫Cuchicheo🤫</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Cuchicheo. Con el tiempo, ya era casi rutina vernos en nuestras casas. La pandemia nos obligó a quedarnos más tiempo encerrados, pero eso no nos detuvo. Al contrario, nos acercó aún más. Aprendimos tanto del otro en esos días: nuestras mañas, nuestros silencios, los gustos raros, los detalles simples que solo se descubren conviviendo.
+Nos dimos cuenta de que éramos más íntimos de lo que creíamos. Compartimos risas, conversaciones largas, comidas improvisadas y, por supuesto, muchas “fotos”. Aunque siempre decíamos que eran solo para eso, sabíamos que no eran solo fotos: eran la excusa perfecta para estar más cerquita, para abrazarnos sin que nadie dijera nada, para regalonear sin medida.
+Esas pequeñas cosas que solo nosotros entendíamos, miradas que lo decían todo, secretos susurrados con cariño. En medio de ese encierro, descubrimos lo bien que nos hacía estar juntos. Lo bonito de simplemente existir al lado del otro, sin necesidad de grandes planes.
+Fue ahí donde lo nuestro se fortaleció aún más. Ya no era solo conocerse, era disfrutarse. Y lo hacíamos, cada día, entre risas, abrazos y todos esos momentos que ahora son recuerdos inolvidables.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 6 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="6.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">💞Conexión💞</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Conexión. Desde ese entonces, volvimos a estar mucho más conectados gracias a las clases virtuales. Aunque el contexto no era el ideal, para nosotros fue otra excusa perfecta para vernos más seguido, incluso a través de una pantalla. Aprovechábamos cada videollamada, cada tarea en conjunto o mensaje durante la clase para sentirnos cerca, para hacernos reír, para seguir en lo nuestro.
+Y sin darnos cuenta, esas instancias nos ayudaron a profundizar aún más la relación. Hablábamos más seguido, compartíamos pensamientos, descubríamos intereses comunes y, sobre todo, nos sentíamos acompañados en medio de la incertidumbre.
+Las clases virtuales no solo nos conectaron al liceo… nos conectaron más entre nosotros. Porque incluso en la distancia, nuestro vínculo seguía creciendo con fuerza. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+            <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 7 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="7.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">👩🏻‍❤️‍👨🏻2° Salida"👩🏻‍❤️‍👨🏻</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>2° Salida. Ya con un poco más de libertad para salir, incluso en medio de la pandemia, volvimos a aprovechar los espacios que se podían. Esta segunda salida fue distinta: no solo por el contexto, sino porque ahora todo fluía de forma más natural.
+Nos veíamos más, casi a diario, y ya no solo por las clases virtuales o las visitas en casa. Hacíamos nuestras cosas juntos: estudiar, salir a caminar, entre otras cosas. Todo se volvió parte de una rutina bonita, sin esfuerzo, donde estar juntos era lo más normal y deseado.
+Cada paseo, cada encuentro, sumaba algo a nuestra historia. Era evidente que ya no éramos dos personas conociéndose, sino dos que habían decidido caminar en la misma dirección. Y aunque el mundo seguía convulsionado, lo nuestro se sentía como un refugio seguro.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 8 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="8.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🤝Compañía🤝</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Compañia. Con el tiempo, entendimos que más allá del amor o el cariño, lo nuestro se basaba en algo profundo. Esa que no necesita grandes palabras ni gestos llamativos. Esa que se siente en lo cotidiano, en el silencio compartido, en el simple hecho de estar.
+Estábamos siempre el uno para el otro. Nos acompañábamos en los días buenos y también en los días malos. En los momentos en que había risas, y en los otros, cuando solo hacía falta un abrazo o una mirada para entender todo sin hablar.
+Tú te volviste mi refugio, y yo el tuyo. Nos hicimos parte de la rutina del otro, de esas pequeñas costumbres que daban sentido al día. Y aunque el mundo allá afuera seguía incierto, en nuestra compañía encontrábamos estabilidad.
+Porque no era solo estar juntos, era acompañarnos de verdad. Con respeto, con amor, con presencia. Y eso, en medio de todo lo que vivíamos, fue lo que más fortaleció nuestro vínculo. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 9 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="9.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🛡️Tu Seguridad🛡️</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"></small></p>
+            <div class="card-text card-extra-text">
+              <p>Tu Seguridad. En medio de todo lo que compartíamos, hubo un momento en que vi una parte de ti que hasta entonces no conocía: tu lado más frágil. Tu parte más humana, más vulnerable. Y la verdad... no supe bien cómo reaccionar.
+Me tomó por sorpresa, no porque no quisiera estar para ti, sino porque nunca imaginé que alguien tan fuerte como tú también necesitara ser protegido. Y desde ese instante, algo en mí cambió. Empecé a mirar más allá de tus sonrisas, de tu fuerza, y entendí que también necesitabas cuidado, palabras suaves, paciencia. Quise protegerte, cuidarte con todo lo que tenía... pero la verdad es que no siempre supe cómo hacerlo. A veces me sentía torpe, otras veces inseguro. Tenía miedo de fallarte, de no estar a la altura. Pero lo que nunca me faltaron fueron las ganas de estar ahí, de acompañarte incluso cuando no encontraba las palabras.
+Con el tiempo, fui aprendiendo, a leerte en silencio, a saber cuándo hablar y cuándo solo abrazar, a estar sin invadir, a apoyar sin presionar. Porque cuidar de ti se volvió algo natural, no por obligación, sino por amor.
+Y aunque aún me siento inseguro a veces, si hay algo que tengo claro es que quiero seguir aprendiendo cómo cuidar de ti, cómo darte seguridad. Porque tú me la das a mí todos los días, solo con estar. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+            <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 10 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="10.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">🦦Paseo🦦</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Paseo. No tuve paseo de curso ese año, pero tú, sin dudarlo, me acogiste en el tuyo. Fue un gesto simple en apariencia. Me integraste con naturalidad, sin hacerlo sentir forzado, y juntos fuimos a la piscina.
+Ese día, aunque estábamos rodeados de más gente, yo solo quería estar contigo. Me quedé a tu lado, disfrutando del momento, aunque había algo dentro de mí que me hacía sentir un poco incómodo... Sabía que andaba tu ex cerca, y no podía evitar esa incomodidad.
+Pero ahí estuviste tú. Con tus gestos, tu tranquilidad, tu forma de hablarme y hacerme sentir seguro. No necesitaste grandes palabras, porque tu manera de mirarme y quedarte a mi lado me dio la confianza que necesitaba. Me hiciste sentir que no tenía nada que temer, que estabas conmigo y solo conmigo.
+Ese paseo, más allá del lugar o lo que hicimos, se volvió especial por cómo me hiciste sentir. A pesar de todo, me diste tu espacio, tu seguridad y eso, en medio de todo, valió más que cualquier otra cosa.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 11 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="11.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">👧🏻1° Encuentro👧🏻</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>1° Encuentro. Este primer encuentro fue distinto a todos los demás, porque no solo se trató de ti y de mí, sino también de alguien muy especial para mí: mi sobrina. Recuerdo ese momento con claridad, porque hubo una conexión inmediata entre ustedes dos. Como si ya se conocieran de antes, como si hablaran el mismo idioma sin necesidad de explicaciones.
+Desde que se vieron, se compenetraron rápido. Jugaron, conversaron, se rieron juntas. compartieron de mil formas posibles, y cada una de ellas fue genuina, espontánea. Me sorprendió y a la vez me alegró ver cómo lograbas entrar en su mundo con tanta facilidad.
+Ella habla mucho de ti. Aún hoy me pregunta por ti con esa voz entusiasta: "¿Y la Yaeth?", "¿Cuándo va a venir?", "¿Has hablado con ella?". Es inevitable sonreír cada vez que lo hace, porque sé que ese cariño que sembraste en tan poco tiempo fue verdadero.
+Ese primer encuentro entre ustedes no solo me confirmó lo especial que eres, también me mostró lo natural que es verte conectar con quienes me rodean.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 12 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="12.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🤓Extravagancia🤓</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Extravagancia. Cuando empecé a conocerte, no esperaba encontrar a alguien tan diferente a lo que imaginaba. Me mostraste una personalidad única, llena de matices que no había visto antes. Esa mezcla de espontaneidad, locura sana y autenticidad me sorprendió y me divirtió como nada.
+Tu manera de ser me invitó a descubrir más, a querer conocer cada faceta, cada detalle que te hace ser quien eres. Esa extravagancia tuya, lejos de alejarme, me atrapó y me hizo disfrutar cada momento contigo.
+Fue entonces cuando entendí que lo diferente no solo es valioso, sino que puede convertirse en la chispa que enciende algo especial. Y gracias a esa chispa, quise seguir conociéndote más y más.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+            <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 13 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="13.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">🏐Apoyo🏐</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Apoyo. Podría hablar de muchas formas en las que me has apoyado, pero hay una que guardo con especial cariño: todas las veces que estuviste ahí, viéndome jugar mis partidos de vóleibol. Siempre presente, siempre alentándome, haciéndome sentir acompañado desde donde estuvieras.
+Recuerdo con claridad cuando me gritabas emocionada, tratando de darme fuerza o ánimos y aunque en ese momento me ponía muy nervioso y hasta pensaba que no me gustaba, había algo dentro de mí que se encendía. Sentía esa chispa tuya en mi corazón, esa energía tuya que me hacía vibrar diferente.
+Era una mezcla extraña de nervios y alegría, porque me importaba lo que tú veías en mí. Y aunque a veces no sabía cómo reaccionar, tu forma de apoyarme, de estar ahí sin condiciones, siempre me dio impulso y seguridad.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 14 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="14.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🚌1° Salida solos🚌</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p> 1° Salida solos. Nuestra primera salida solos fue a Cobquecura, un día tranquilo, sin apuros ni presiones. Solo nosotros, el mar de fondo y la brisa que parecía acompañar cada palabra y cada silencio entre nosotros.
+Fue una experiencia distinta, íntima. No necesitábamos hacer grandes cosas para disfrutar: solo estar juntos bastaba. Caminar, conversar, reírnos de cualquier tontera, todo se sentía natural, sencillo y lleno de sentido.
+Me gustó mucho ese día, porque ahí entendí que el tiempo contigo fluye diferente. Que tu compañía es suficiente para que un momento cualquiera se transforme en algo valioso. Fue un día relajante, especial y el inicio de muchas más salidas que vendrían después, con la misma esencia: compartir juntos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 15 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="15.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🛡️Decisión🛡️</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Decisión. Desde este punto empecé a entenderte de verdad. Ya no solo veía tus sonrisas o tus ocurrencias, sino también esos rincones más frágiles, tus inseguridades, tus miedos, tus silencios. Y fue ahí donde mi cariño por ti creció más.
+Aprendí a quererte no solo por lo que muestras, sino también por lo que a veces escondes. Porque en esos momentos donde no te sentías lo suficientemente fuerte, ahí quise estar yo, acompañándote, sosteniéndote, sin exigencias, sin condiciones.
+Fuiste tú quien me enseñó a cuidar con ternura, a estar presente con respeto. Y aunque a veces dudabas de ti misma, seguiste eligiéndome. Me escogiste una y otra vez para sentirte segura, para sentirte tú. Y créeme que eso, para mí, es una de las decisiones más lindas que has tomado.
+Te elijo también, cada día. Con todo lo que eres. Con lo fuerte y con lo frágil. Porque desde esa decisión, nuestra historia se hizo aún más real, más profunda, más verdadera.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+                  <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 16 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="16.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">⛰️Desafío⛰️</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Desafío. Llegó un momento en que las cosas no fueron fáciles. Pasamos por situaciones difíciles, algunas que dolieron, otras que confundieron, y muchas que nos exigieron más de lo que imaginábamos. Fueron días en los que nos tocó mirar de frente nuestras diferencias, nuestras heridas, y decidir si seguíamos o no.
+Pudo haber sido distinto, claro que sí. Pero fue así. Como tenía que ser: real, crudo, pero lleno de intención. Lo importante es que, a pesar de todo, seguimos. No nos soltamos.
+Supimos encontrar espacio para conversar, para sonreír de nuevo, para relajarnos y entendernos. Volvimos a conectar, incluso después de la tormenta. Nos compenetramos de otra manera, más madura, más consciente.
+Porque amar también es eso: atravesar juntos los desafíos y salir fortalecidos. Y eso fue exactamente lo que hicimos. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 17 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="17.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">👨‍👩‍👧‍👦Salida familiar👨‍👩‍👧‍👦</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Salida familiar. No sé bien cómo surgió o por qué decidiste invitarme, pero de pronto me vi ahí, compartiendo contigo y tu familia en ese camping. Fue una sorpresa linda, porque ese tipo de invitaciones dicen mucho más de lo que parecen.
+Agradezco profundamente que me abrieras ese espacio, que me dejaras compartir con tus seres queridos, convivir con ellos, reírnos juntos y simplemente disfrutar. Nos bañamos, jugamos, descansamos y también nos dimos tiempo para nosotros. Pasaron cosas entre nosotros, cosas X que no me arrepiento de haber vivido.
+Estábamos conectados, de una forma simple y directa. Sin máscaras, sin presiones. Solo tú y yo, en medio de todo lo demás. porque fueron reales, sentidas, y nos unieron aún más.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 18 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="18.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">🏕️Camping🏕️</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p> Camping. Me gustaron mucho esas veces que fuimos juntos al camping. Para mí, ese lugar tiene algo especial, me trae recuerdos bonitos de mi infancia, momentos donde todo era más simple y libre. Y ahora, compartirlo contigo le dio un valor totalmente distinto.
+Salir de noche a escondidas, asustarte a propósito, caminar por los senderos, reírnos, hacer travesurasss, todo eso hizo que lo viviera con una emoción distinta. Pero lo mejor, sin duda, fue tener tu compañía ahí, a mi lado.
+Dormir juntos en una carpa, abrazados, en medio del silencio de la naturaleza, esa sensación de tranquilidad, de estar protegidos el uno con el otro, es algo que no se explica con palabras. Es algo que simplemente se siente. Y créeme, quiero repetirlo. Muchas veces más. Porque contigo, incluso lo más cotidiano se vuelve inolvidable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+                  <div class="d-flex flex-wrap justify-content-center card-group">
+        <!-- Tarjeta 19 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="19.jpeg" alt="Foto" class="card-img-bottom">
+          <div class="card-body">
+            <h5 class="card-title">⚔️Rivalidad⚔️</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Rivalidad. Uno de los tantos juegos que hemos compartido, y que todavía me saca una sonrisa, fue el pool en el camping. No sé por qué, pero ese juego despertó en mí una competitividad que ni yo mismo esperaba.
+Me lo tomé tan en serio, que cada intento fallido se sentía como una pequeña derrota personal. Fue tras error, tras error, intentando pegarle bien a la bola y tú, mientras tanto, riéndote, disfrutando, pasándolo bien, y quizás hasta provocándome un poquito más para que me frustrara.
+Pero, ¿sabes qué? A pesar de todo, quería ganarte. No por orgullo, sino porque me encanta jugar contigo, medirme contigo, y sentir que estamos en ese tipo de conexión donde incluso un juego puede ser una excusa para compartir algo único.
+Esa pequeña rivalidad, tan tonta como linda, fue solo otra forma más de amarte, de reírnos juntos, y de seguir sumando recuerdos que siempre voy a atesorar. </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 20 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="20.jpeg" class="card-img-center" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">👋Despedida👋</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Despedida. Esta parte fue, sin duda, una de las más difíciles para los dos. Tener que separarnos físicamente, aunque sea por un tiempo, nos rompió un poco por dentro. Pero entendí y admiro profundamente que tenías que seguir adelante, que tienes metas grandes que te esperan y una vida llena de sueños por conquistar.
+Siempre voy a recordar ese momento, no como un final, sino como una pausa necesaria. Porque lo que tú haces, lo que eres, lo que proyectas, es simplemente admirable. No todos tienen esa fuerza para tomar decisiones tan importantes por su futuro. Tú sí. Y eso solo me confirma lo increíble que eres.
+Desde que partiste, sigo acá, esperándote con paciencia, con amor, con esa certeza de que todo esto vale la pena. Y lo haré las veces que sea necesario, porque sé que al final de cada viaje, el destino que más anhelo es volver a estar a tu lado.
+Te espero. Porque te elijo. Siempre.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 21 -->
+        <div class="card" onclick="toggleCard(this)">
+          <img src="21.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Encuentro entre 2 mundos</h5>
+            <p class="card-text"> </p>
+            <p class="card-text"><small class="text-body-secondary"> </small></p>
+            <div class="card-text card-extra-text">
+              <p>Encuentro entre dos mundos. Después de tu partida, cuando finalmente volvimos a encontrarnos, sentí que estábamos en dos mundos distintos, llenos de dudas y conflictos que ambos cargábamos en el alma. Sin embargo, a pesar de todo eso, seguiste confiando, aunque fuera un poco, y yo también quise creer en esa confianza.
+Sabemos que estamos cambiando, y no siempre es claro si será para bien o para mal, pero lo que sí sé es que seguimos nuestros caminos, a veces separados, pero con un hilo invisible que nos conecta. O al menos, eso es lo que yo quiero pensar.
+En medio de esa distancia y esas diferencias, me tomé el tiempo para hacer pequeñas cosas para ti, para recordarte que aquí hay alguien que te espera con ojos de niño pequeño, con esa mirada curiosa y tierna de un gato que anhela tu regreso.
+Porque aunque el tiempo y los cambios nos alejen, en mi corazón siempre hay un espacio reservado para ti, para ese reencuentro que aún soñamos, ese donde volvamos a ser novios, o tal vez algo más grande, como compartir la vida entera juntos. </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-</body>
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('open');
+    }
 
+     function playMusic() {
+      const audio = document.getElementById("myAudio");
+      audio.play().catch(error => {
+        alert("Tu navegador bloqueó la reproducción automática. Intenta hacer clic nuevamente.");
+        console.error(error);
+      });
+    }
+
+  </script>
+
+</body>
 </html>
+
+
+
