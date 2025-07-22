@@ -317,6 +317,10 @@
       </audio>
     </section>
 
+<audio id="cartaAudio" loop>
+  <source src="Anymore.mp3" type="audio/mpeg">
+</audio>
+
     <section>
       <div class="d-flex flex-wrap justify-content-center card-group">
         <div class="card" data-bs-toggle="modal" data-bs-target="#momentModal"
@@ -502,7 +506,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#momentModal"
               data-title="👨‍👩‍👧‍👦 Salida familiar 👨‍👩‍👧‍👦"
               data-image="17.jpeg"
-              data-text="Salida familiar. No sé bien cómo surgió o por qué decidiste invitarme, pero de pronto me vi ahí, compartiendo contigo y tu familia en ese camping. Fue una sorpresa linda, porque ese tipo de invitaciones dicen mucho más de lo que parecen. Agradezco profundamente que me abrieras ese espacio, que me dejaras compartir con tus seres queridos, convivir con ellos, reírnos juntos y simplemente disfrutar. Nos bañamos, jugamos, descansamos y también nos dimos tiempo para nosotros. Pasaron cosas entre nosotros, cosas X que no me arrepiento de haber vivido. Estábamos conectados, de una forma simple y directa. Sin máscaras, sin presiones. Solo tú y yo, en medio de todo lo demás. porque fueron reales, sentidas, y nos unieron aún más.">
+              data-text="Salida familiar. No sé bien cómo surgió o por qué decidiste invitarme, pero de pronto me vi ahí, compartiendo contigo y tu familia en ese camping. Fue una sorpresa linda, porque ese tipo de invitaciones dicen mucho más de lo que parecen. Agradezco profundamente que me abrieras ese espacio, que me dejaras compartir con tus seres queridos, convivir con ellos, reírnos juntos y simplemente disfrutar. Nos bañamos, jugamos, descansamos y también nos dimos tiempo para nosotros. Pasaron cosas entre nosotros,que no me arrepiento de haber vivido. Estábamos conectados, de una forma simple y directa. Sin máscaras, sin presiones. Solo tú y yo, en medio de todo lo demás. porque fueron reales, sentidas, y nos unieron aún más.">
           <img src="17.jpeg" class="card-img-top" alt="Salida Familiar">
           <div class="card-body">
             <h5 class="card-title">👨‍👩‍👧‍👦 Salida familiar 👨‍👩‍👧‍👦</h5>
@@ -556,7 +560,7 @@
     </section>
 
 <section style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
-  <div class="card" style="margin: 20px; max-width: 350px;" 
+  <div id="cumpleCard" class="card" style="margin: 20px; max-width: 350px;" 
        data-bs-toggle="modal" 
        data-bs-target="#momentModal"
        data-title="🎂 Feliz cumpleaños, mi Yaeth 🎂"
@@ -622,7 +626,8 @@ Toñito 💌">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Audio Play/Pause Toggle
-    function playMusic() {
+
+function playMusic() {
       const audio = document.getElementById("myAudio");
       if (audio.paused) {
         audio.play().catch(error => {
@@ -633,6 +638,39 @@ Toñito 💌">
         audio.pause();
       }
     }
+
+    // siguiente 
+
+
+const cartaAudio = document.getElementById('cartaAudio');
+const fondoAudio = document.getElementById('myAudio');
+const modal = document.getElementById('momentModal');
+
+let cartaAbiertaId = null;
+
+modal.addEventListener('show.bs.modal', (event) => {
+  const triggerElement = event.relatedTarget;
+  cartaAbiertaId = triggerElement ? triggerElement.id : null;
+
+  if (cartaAbiertaId === 'cumpleCard') {
+    fondoAudio.pause();
+    cartaAudio.currentTime = 0;
+    cartaAudio.play();
+  }
+});
+
+modal.addEventListener('hide.bs.modal', () => {
+  if (cartaAbiertaId === 'cumpleCard') {
+    cartaAudio.pause();
+    fondoAudio.play();
+  }
+  cartaAbiertaId = null;
+});
+
+
+
+    //Fin de la musica
+
 
     // Modal Content Handling for momentModal
     const momentModal = document.getElementById('momentModal');
