@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuestra Historia de Amor ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #d65e7a;
+      --secondary-color: #e96d58;
+      --dark-overlay: rgba(0, 0, 0, 0.4);
+      --light-overlay: rgba(255, 255, 255, 0.1);
+      --card-gradient-start: #ffffff1a
+      --card-gradient-end: #ffffff0d;
+      --text-color: white;
+      --shadow-light: rgba(0, 0, 0, 0.2);
+      --shadow-medium: rgba(0, 0, 0, 0.3);
+      --shadow-strong: rgba(0, 0, 0, 0.4);
+      --modal-bg: rgba(0, 0, 0, 0.7); 
+      --modal-content-bg: linear-gradient(to bottom right, #ff6b6b, #ffa07a);
+      --modal-text-color: white;
+      --modal-header-color: #ffd700;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif; 
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      justify-content: flex-start;
+      padding-top: 50px; 
+    }
+
+    
+    nav {
+      background: var(--dark-overlay);
+      backdrop-filter: blur(10px);
+      width: 100%; 
+      position: fixed; 
+      top: 0;
+      left: 0;
+      z-index: 1000; 
+    }
+
+    nav .navbar-nav { 
+      width: 100%;
+      justify-content: center; 
+    }
+
+    nav .nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem; 
+      border-radius: 25px; 
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-weight: 500;
+    }
+
+    nav .nav-link:hover {
+      background-color: var(--light-overlay);
+      transform: translateY(-2px); 
+    }
+
+    main {
+      padding: 80px 20px 50px; 
+      text-align: center;
+      max-width: 1200px; 
+      width: 100%;
+    }
+
+    h1, h5 {
+      font-family: 'Pacifico', cursive; 
+      text-shadow: 2px 2px 4px var(--shadow-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    #main-title { 
+      font-size: 3.5rem; 
+      font-weight: bold;
+      margin-bottom: 0.5rem; 
+    }
+
+    #subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 3rem; 
+    }
+
+    
+    #playBtn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px var(--shadow-light);
+      transition: all 0.3s ease;
+      margin-top: 20px; 
+      margin-bottom: 40px;
+    }
+
+    #playBtn:hover {
+      background-color: #e6395e; 
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 15px var(--shadow-medium);
+    }
+
+    
+    .card-group {
+      gap: 30px; 
+      justify-content: center;
+      margin-bottom: 50px !important; 
+    }
+
+    .card {
+      background: linear-gradient(to bottom right, var(--card-gradient-start), var(--card-gradient-end));
+      border: 1px solid rgba(255, 255, 255, 0.15); 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px var(--shadow-medium); 
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      height: auto; 
+      width: 100%; 
+      max-width: 320px; 
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px); 
+      box-shadow: 0 15px 40px var(--shadow-strong);
+    }
+
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+      border-top-left-radius: 18px; 
+      border-top-right-radius: 18px; 
+      object-position: center; 
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      text-align: center; 
+      flex-grow: 1; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+    }
+
+    .card-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem; 
+      margin-bottom: 0.8rem;
+      color: #ffd700; 
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    
+    .modal-backdrop.show {
+      opacity: 0.8; 
+      background-color: var(--modal-bg);
+    }
+
+    .modal-content {
+      background: var(--modal-content-bg); 
+      color: var(--modal-text-color);
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 10px 30px var(--shadow-strong);
+    }
+
+    .modal-header {
+      border-bottom: none;
+      padding: 1.5rem 2rem 0.5rem;
+    }
+
+    .modal-title {
+      font-family: 'Pacifico', cursive;
+      color: var(--modal-header-color);
+      font-size: 2.2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-body {
+      padding: 1rem 2rem 2rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify; 
+    }
+
+    .modal-footer {
+      border-top: none;
+      padding: 0.5rem 2rem 1.5rem;
+    }
+
+    .modal-footer .btn-close-custom { 
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-footer .btn-close-custom:hover {
+      background-color: #e6395e;
+    }
+
+    .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%); 
+    }
+
+    
+    #momentModal #modalImage {
+        cursor: pointer; 
+    }
+
+   
+    #imageViewerModal .modal-content {
+        background: transparent; 
+        border: none;
+    }
+    #imageViewerModal .modal-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    #imageViewerModal #fullSizeImage {
+        max-width: 100%;
+        max-height: 90vh; 
+        width: auto;
+        height: auto;
+        display: block;
+        margin: auto;
+        object-fit: contain; 
+    }
+    #imageViewerModal .btn-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 1100; 
+        filter: invert(1) grayscale(100%) brightness(200%); 
+        font-size: 1.5rem; 
+    }
+
+
+   
+    @media (min-width: 576px) { 
+      .card {
+        width: calc(50% - 15px); 
+      }
+    }
+
+    @media (min-width: 768px) {
+      main {
+        padding: 100px 30px 60px;
+      }
+      .card {
+        width: calc(33.333% - 20px); 
+      }
+      .card-img-top {
+        height: 280px; 
+      }
+      #main-title {
+        font-size: 4.5rem;
+      }
+      #subtitle {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (min-width: 992px) { 
+      .card {
+        width: calc(33.333% - 20px); 
+        max-width: 350px; 
+      }
+      .card-img-top {
+        height: 300px;
+      }
+    }
+
+    @media (min-width: 1200px) { 
+      .card {
+        width: calc(25% - 22.5px); 
+        max-width: 300px; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+        <h2>👣 RECAPITULANDO 👣</h2>
+  </header>
+
+ 
+
+      <button id="playBtn" onclick="playMusic()"> ‼️ Tócame ‼️</button>
+      <audio id="myAudio" loop> 
+        <source src="Photograph.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+<section style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;">
+  <div id="cumpleCard" class="card" style="width: 100%; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border-radius: 12px; overflow: hidden;" 
+       data-bs-toggle="modal" 
+       data-bs-target="#momentModal"
+       data-title="🎂 Testeo 🎂"
+       data-image="22.jpeg"
+       data-text=" Desde que llegaste, no sé si dormir contigo o soñarte más. Me encantas, y no solo cuando te arreglas o sonríes bonito, me encantas cuando estás en silencio, cuando haces ese gesto de molestia adorable, cuando te enojas un poquito solo para que te consienta después. Hay algo en ti que me provoca y me desarma. Tu forma de mirarme como si ya supieras lo que estoy pensando. Tu voz, que me persigue incluso cuando no estás. Tus manos, que ya aprendieron a quedarse en mi memoria. Y yo, que nunca fui de entregarme fácil, me encuentro escribiéndote con el corazón en las manos y una sonrisa de tonto enamorado. Porque contigo todo se vuelve un juego: el roce de tus labios en los míos, el susurro de tus bromas, ese baile sutil entre la ternura y el deseo. Me gusta cuando finges que no sabes lo que provocas, cuando caminas como si el mundo no supiera que yo te estoy mirando, cuando te acercas con esa intención camuflada de cariño y travesura. Y yo caigo, caigo feliz, porque no quiero escapar. No quiero una historia perfecta, quiero una contigo: con risas, con enredos, con tardes de caricias largas y noches donde la calma no sea lo que buscamos. Quiero que te quedes a mi lado, no solo cuando todo brille, sino también cuando se apague un poco el mundo. Quiero ser tu refugio, tu cómplice y tu motivo para sonreír con descaro. Y que cada vez que me mires, te den ganas de hacer todo… menos irte. ">
+       
+    <img src="22.jpeg" class="card-img-top" alt="Reconociendo" style="width: 100%; height: auto; object-fit: cover;">
+    
+    <div class="card-body" style="text-align: center;">
+      <h5 class="card-title">Salidita</h5>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <div class="modal fade" id="momentModal" tabindex="-1" aria-labelledby="momentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="momentModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" src="" alt="Moment Image" class="img-fluid rounded mb-3" style="max-height: 300px; width: 100%; object-fit: cover; object-position: center;">
+          <p id="modalText"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-close-custom" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imageViewerModal" style="background: rgba(0, 0, 0, .6);" tabindex="-1" aria-labelledby="imageViewerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-body">
+          <img id="fullSizeImage" src="" alt="Full size image">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  
+
+function playMusic() {
+      const audio = document.getElementById("myAudio");
+      if (audio.paused) {
+        audio.play().catch(error => {
+          alert("Tu navegador bloqueó la reproducción automática. Por favor, haz clic en la página para iniciar el audio.");
+          console.error("Error al intentar reproducir el audio:", error);
+        });
+      } else {
+        audio.pause();
+      }
+    }
+
+
+
+
+const cartaAudio = document.getElementById('cartaAudio');
+const fondoAudio = document.getElementById('myAudio');
+const modal = document.getElementById('momentModal');
+
+let cartaAbiertaId = null;
+
+modal.addEventListener('show.bs.modal', (event) => {
+  const triggerElement = event.relatedTarget;
+  cartaAbiertaId = triggerElement ? triggerElement.id : null;
+
+  if (cartaAbiertaId === 'cumpleCard') {
+    fondoAudio.pause();
+    cartaAudio.currentTime = 0;
+    cartaAudio.play();
+  }
+});
+
+modal.addEventListener('hide.bs.modal', () => {
+  if (cartaAbiertaId === 'cumpleCard') {
+    cartaAudio.pause();
+    fondoAudio.play();
+  }
+  cartaAbiertaId = null;
+});
+
+
+
+
+
+    const momentModal = document.getElementById('momentModal');
+    const imageViewerModal = new bootstrap.Modal(document.getElementById('imageViewerModal')); // Initialize the new modal
+
+    momentModal.addEventListener('show.bs.modal', event => {
+    
+      const button = event.relatedTarget;
+    
+      const title = button.getAttribute('data-title');
+      const image = button.getAttribute('data-image');
+      const text = button.getAttribute('data-text');
+
+    
+      const modalTitle = momentModal.querySelector('.modal-title');
+      const modalImage = momentModal.querySelector('#modalImage');
+      const modalText = momentModal.querySelector('#modalText');
+
+      modalTitle.textContent = title;
+      modalImage.src = image;
+      modalText.textContent = text;
+    });
+
+ 
+    document.getElementById('modalImage').addEventListener('click', function() {
+        const imageUrl = this.src; 
+        document.getElementById('fullSizeImage').src = imageUrl; 
+        imageViewerModal.show(); 
+    });
+  </script>
+
+</body>
+</html>
